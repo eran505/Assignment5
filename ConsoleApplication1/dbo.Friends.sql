@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[Friends] (
+    [User1] VARCHAR (50) NOT NULL,
+    [User2] VARCHAR (50) NOT NULL,
+    [Date]  DATE         NULL,
+    CONSTRAINT [shifts_pk2] PRIMARY KEY CLUSTERED ([User1] ASC, [User2] ASC),
+    CONSTRAINT [fk_pk2] FOREIGN KEY ([User1]) REFERENCES [dbo].[RUsers] ([Email])ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT [fk_pk3] FOREIGN KEY ([User2]) REFERENCES [dbo].[RUsers] ([Email])ON UPDATE CASCADE ON DELETE CASCADE
+);
+
