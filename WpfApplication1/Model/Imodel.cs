@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace Ass5.Model
 {
-    interface Imodel
+    public interface Imodel
     {
-
+        List<string> GetTable(int index);
+         List<string> ShowAllProduct();
          bool AddUser(string mail, string name ,string password ,int age);
          string GetUser(string mail);
          bool RemoveUser(string mail);

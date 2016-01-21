@@ -1,0 +1,241 @@
+﻿<Window x:Class="Ass5.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="377.463" Width="525" Closing="Window_Closing"
+>
+
+
+    <Grid ShowGridLines="False"   Visibility="Visible">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush   ImageSource="C:\Users\yarin\Downloads\final-ניתוצ-5\ניתוצ 5\WpfApplication1\Images\shoppingcart.png" AlignmentY="Top" AlignmentX="Center"/>
+           
+        </Grid.Background>
+        <Menu Name="menuu" Visibility="Collapsed" Grid.Column="1" Grid.Row="0" >
+            <MenuItem Header="ניהול משתמש רגיל">
+                <MenuItem Header="ניהול חשבון משתמש" Click="new_Click" />
+                <MenuItem Header="קליטת לייק" Click="new_Click"/>
+                <MenuItem Header="הוספת תגובה" Click="new_Click"/>
+                <MenuItem Header="הוספת המלצה" Click="new_Click"/>
+                <MenuItem Header="הוספת חברה למעקב" Click="new_Click"/>
+                <MenuItem Header="ניהול בקשות חברות">
+                    <MenuItem Header="הוספה\ מחיקה" Click="addFriend_Click"/>
+                    <MenuItem Header="אישור בקשות חברות" Click="new_Click"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="ניהול משתמש פיננסי">
+                <MenuItem Header="ניהול חשבון משתמש פיננסי" Click="new_Click" />
+                <MenuItem Header="ניהול מוצר" Click="new_Click"/>
+                <MenuItem Header="ניהול פרסום" Click="new_Click"/>
+                <MenuItem Header="ניהול הרשאות" Click="new_Click"/>
+                <MenuItem Header="תשלום שירות תוכן" Click="new_Click"/>
+                <MenuItem Header="הפקת דוח מוצרים">
+                    <MenuItem Header="יצירת דוח" Click="new_Click"/>
+                    <MenuItem Header="הדפסת דוח" Click="new_Click"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="ניהול מוצרים וסלי קניות">
+                <MenuItem Header="חיפוש מוצר" Click="new_Click" />
+                <MenuItem Header="חיפוש סל קניות" Click="new_Click"/>
+                <MenuItem Header="הוספת מוצר לסל קניות" Click="new_Click"/>
+                <MenuItem Header="אימות מוצר" Click="new_Click"/>
+                <MenuItem Header="הזמנת סל קניות" Click="new_Click"/>
+
+            </MenuItem>
+            <MenuItem Header="התנתק" Click="diss_Click"/>
+        </Menu>
+        <Canvas Name="Content" Grid.Column="0" Grid.Row="1" Visibility="Collapsed">
+            <Grid ShowGridLines="False"  Height="290" Width="518">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <ListBox x:Name="terms"  SelectionChanged="listBox1_SelectedIndexChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" Grid.ColumnSpan="2" Margin="107.2,30,25.4,25.6" Grid.RowSpan="3" Grid.Column="1"/>
+
+                <ListBox x:Name="cart"  SelectionChanged="listBox2_SelectedIndexChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="10,76,37.8,46.6" Grid.RowSpan="3"/>
+                <TextBlock  Grid.Column="1" Foreground="Red" FontWeight="Bold" VerticalAlignment="Bottom"  Margin="137.2,0,55.4,71.8" Grid.ColumnSpan="2"><Run Text="Available Items "/></TextBlock>
+                <TextBlock  Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Bottom"  Margin="20,0,172.6,25.8" Grid.ColumnSpan="2"><Run Text="Your cart "/></TextBlock>
+
+                <Button Name="btn_addToCart"  Grid.Column="1" Grid.Row="2"
+                 Click="btn_addToCart_Click" 
+                 Content="Add to cart" VerticalAlignment="Bottom" Width="104" Margin="158.2,0,83.4,-0.4" Grid.ColumnSpan="2" />
+                <Button Name="btn_remFromCart"  Grid.Column="0" Grid.Row="2"
+                 Click="btn_remFromCart_Click" 
+                 Content="Remove from cart" VerticalAlignment="Bottom"  Width="104" Margin="10,0,58.8,14.6" />
+                <TextBlock  
+  Foreground="Navy" 
+  FontSize="30"
+  FontStretch="UltraExpanded"
+  FontStyle="Italic"
+  FontWeight="UltraBold"
+  LineHeight="Auto"
+  Padding="5,10,5,10"
+  TextAlignment="Center"
+  TextWrapping="Wrap"
+  Typography.NumeralStyle="OldStyle"
+  Typography.SlashedZero="True" Grid.Row="0" VerticalAlignment="Center"  Margin="20,0,93.6,41.8" Grid.ColumnSpan="2" Height="55"><Run Text="BUILD CART!? "/></TextBlock>
+
+
+            </Grid>
+
+        </Canvas>
+        <Canvas Name="init" Grid.Column="0" Grid.Row="1"  Visibility="Visible"
+                >
+            <Grid ShowGridLines="False"  Height="290" Width="518">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock DockPanel.Dock="Top" Foreground="Red" FontWeight="Bold" Grid.Column="2" Grid.Row="1"  Height="22"  Margin="9.4,37.2,10.4,37.6"><Run Text="User Name: "/></TextBlock>
+                <TextBox Name="txtbx_Umail" Grid.Column="1" Grid.Row="1"
+                             Width="90" Height="22" Margin="77,37,5.8,37.8"
+                              />
+                <TextBlock  Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Bottom"  Grid.Row="1"  Margin="9.4,0,10.4,10.6"><Run Text="Password: "/></TextBlock>
+                <TextBox Name="txtbx_password" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"
+                             Width="90" Height="22" Margin="77.2,0,5.6,4.8"
+                              />
+
+                <TextBlock Foreground="Red" FontWeight="Bold" Grid.Column="2" VerticalAlignment="Bottom"  Grid.Row="1"  Margin="10.4,0,9.4,80.6"><Run Text="User Type: "/></TextBlock>
+                <TextBlock  
+  Foreground="Navy" 
+  FontSize="30"
+  FontStretch="UltraExpanded"
+  FontStyle="Italic"
+  FontWeight="UltraBold"
+  LineHeight="Auto"
+  Padding="5,10,5,10"
+  TextAlignment="Center"
+  TextWrapping="Wrap"
+  Typography.NumeralStyle="OldStyle"
+  Typography.SlashedZero="True" Grid.Row="0" VerticalAlignment="Center"  Margin="93,10,86.4,31.8" Grid.ColumnSpan="3" Height="55"><Run Text="PAYLESS!? "/></TextBlock>
+
+                <ComboBox  HorizontalAlignment="Left"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           VerticalAlignment="Top"
+                    	Margin="82.2,0.2,0,0"
+                    	
+                    	Width="81"
+                    	Loaded="ComboBox_Max_Month"
+                    	 RenderTransformOrigin="0.231,-0.195"/>
+
+                <Button Name="btn_existUser" Grid.Column="1" Grid.Row="2" 
+                 Click="btn_existUser_Click"
+                 Content="Login" VerticalAlignment="Center" Width="104" />
+                <Button Name="btn_newUser"  Grid.Column="1" Grid.Row="2"
+                 Click="btn_newUser_Click" 
+                 Content="Sign in" VerticalAlignment="Bottom" Width="104" />
+
+            </Grid>
+
+        </Canvas>
+        <Canvas Name="addfriend" Grid.Column="0" Grid.Row="1" Visibility="Collapsed">
+            <Grid ShowGridLines="False"  Height="290" Width="518">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  
+  Foreground="Navy" 
+  FontSize="30"
+  FontStretch="UltraExpanded"
+  FontStyle="Italic"
+  FontWeight="UltraBold"
+  LineHeight="Auto"
+  Padding="5,10,5,10"
+  TextAlignment="Center"
+  TextWrapping="Wrap"
+  Typography.NumeralStyle="OldStyle"
+  Typography.SlashedZero="True" Grid.Row="0" VerticalAlignment="Center"  Margin="93,10,86.4,31.8" Grid.ColumnSpan="3" Height="55"><Run Text="Be Social! do not sell"/></TextBlock>
+
+                <TextBlock DockPanel.Dock="Top" Foreground="Red" FontWeight="Bold" Grid.Column="2" Grid.Row="1"  Height="22"  Margin="9.4,37.2,10.4,37.6"><Run Text="Friend's mail: "/></TextBlock>
+                <TextBox Name="txtbx_friendMail" Grid.Column="1" Grid.Row="1"
+                             Width="90" Height="22" Margin="77,37,5.8,37.8"
+                              />
+
+                <Button Name="btn_addFriend" Grid.Column="1" Grid.Row="1" 
+                 Click="btn_addFriend_Click"
+                 Content="Send friend request" VerticalAlignment="Bottom" Width="120" />
+                <Button Name="btn_remFriend" Grid.Column="1" Grid.Row="2" 
+                 Click="btn_remFriend_Click"
+                 Content="Cancel friendship" VerticalAlignment="Top" Width="120" Margin="26.2,10.4,26.6,0" />
+                <Button Name="btn_back2" Grid.Column="1" Grid.Row="2" 
+                 Click="btn_back_Click2"
+                 Content="Go back" VerticalAlignment="Bottom" Width="104" />
+
+            </Grid>
+
+        </Canvas>
+        <Canvas Name="newUser" Grid.Column="0" Grid.Row="1"  Visibility="Collapsed">
+            <Grid ShowGridLines="False"  Height="290" Width="518">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  
+                  Foreground="Navy" 
+                  FontSize="30"
+                  FontStretch="UltraExpanded"
+                  FontStyle="Italic"
+                  FontWeight="UltraBold"
+                  LineHeight="Auto"
+                  Padding="5,10,5,10"
+                  TextAlignment="Center"
+                  TextWrapping="Wrap"
+                  Typography.NumeralStyle="OldStyle"
+                  Typography.SlashedZero="True" Grid.Row="0" VerticalAlignment="Center"  Margin="93,10,86.4,31.8" Grid.ColumnSpan="3" Height="55"><Run Text="JOIN PAYLESSSSSSS!? "/></TextBlock>
+
+                <TextBlock VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" Grid.Column="2" Grid.Row="1"  Height="22"  Margin="9.4,0.2,10.4,0"><Run Text="User Name: "/></TextBlock>
+                <TextBox Name="txtbx_Uname2" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" 
+                             Width="90" Height="22" Margin="78.2,0.2,4.6,0"
+                              />
+                <TextBlock DockPanel.Dock="Top" Foreground="Red" FontWeight="Bold" Grid.Column="2" Grid.Row="1"  Height="22"  Margin="19.4,36.2,0.4,38.6"><Run Text="Email: "/></TextBlock>
+                <TextBox Name="txtbx_Mail" Grid.Column="1" Grid.Row="1"
+                             Width="90" Height="22" Margin="77.2,36.2,5.6,38.6"
+                              />
+                <TextBlock  Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Bottom"  Grid.Row="1"  Margin="19.4,0,0.4,9.6"><Run Text="Password: "/></TextBlock>
+                <TextBox Name="txtbx_password2" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"
+                             Width="90" Height="22" Margin="77.2,0,5.6,4.8"
+                              />
+                <TextBlock  Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Top"  Grid.Row="2"  Margin="20.4,10.4,-0.6,0"><Run Text="Age: "/></TextBlock>
+                <TextBox Name="txtbx_age" Grid.Column="1" Grid.Row="2" VerticalAlignment="Top"
+                             Width="90" Height="22" Margin="77.2,5.4,5.6,0"
+                              />
+                <Button Name="btn_submit" Grid.Column="1" Grid.Row="2" 
+                 Click="btn_Submit_Click"
+                 Content="Submit" VerticalAlignment="Center" Width="104" />
+                <Button Name="btn_back" Grid.Column="1" Grid.Row="2" 
+                 Click="btn_back_Click"
+                 Content="Go back" VerticalAlignment="Bottom" Width="104" />
+
+            </Grid>
+        </Canvas>
+    </Grid>
+</Window>
